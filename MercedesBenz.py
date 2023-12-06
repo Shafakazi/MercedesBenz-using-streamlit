@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
 data = {
     'Model': ['A-class','C-Class', 'E-Class', 'S-Class', 'GLA', 'GLC', 'GLE', 'GLS', 'EQA', 'EQB', 'EQC', 'AMG-GT', 'AMG-GT4', 'AMG ONE', 'Sprinter', 'Vito', 'Citan', 'Actros', 'Arocs', 'Econic', 'Citaro', 'Tourismo'],
@@ -46,6 +47,15 @@ def main():
 
     st.subheader("Filtered Vehicle Models Data")
     st.write(filtered_data)
+
+    # Plotting the graph
+    st.subheader("Price Distribution of Vehicle Models")
+    plt.figure(figsize=(10,6))
+    plt.barh(filtered_data['Model'], filtered_data['Price'])
+    plt.xlabel('Price')
+    plt.ylabel('Model')
+    plt.title('Price Distribution of Vehicle Models')
+    st.pyplot(plt.gcf())
 
 if __name__ == "__main__":
     main()
